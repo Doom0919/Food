@@ -26,4 +26,4 @@ COPY . /app/
 EXPOSE 8000
 
 # Run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "food.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "food.wsgi:application"]
