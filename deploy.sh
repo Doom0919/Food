@@ -32,14 +32,14 @@ cp nginx_food.conf nginx/conf.d/food.conf
 
 # 4. Stop existing containers
 echo "Stopping existing containers..."
-docker-compose down || true
+docker compose down || true
 
 # 5. Build and start containers
 echo "Building Docker images..."
-docker-compose build --no-cache
+docker compose build --no-cache
 
 echo "Starting containers..."
-docker-compose up -d
+docker compose up -d
 
 # 6. Wait for database to be ready
 echo "Waiting for database to be ready..."
@@ -47,30 +47,30 @@ sleep 10
 
 # 7. Run migrations
 echo "Running database migrations..."
-docker-compose exec -T web python manage.py migrate
+docker compose exec -T web python manage.py migrate
 
 # 8. Collect static files
 echo "Collecting static files..."
-docker-compose exec -T web python manage.py collectstatic --noinput
+docker compose exec -T web python manage.py collectstatic --noinput
 
 # 9. Check status
 echo ""
 echo "======================================"
 echo "Deployment Status"
 echo "======================================"
-docker-compose ps
+docker compose ps
 
 echo ""
 echo "======================================"
 echo "Recent Logs"
 echo "======================================"
-docker-compose logs --tail=20 web
+docker compose logs --tail=20 web
 
 echo ""
 echo "✅ Deployment completed!"
 echo ""
 echo "Next steps:"
-echo "1. Check if containers are running: docker-compose ps"
-echo "2. View logs: docker-compose logs -f web"
+echo "1. Check if containers are running: docker compose ps"
+echo "2. View logs: docker compose logs -f web"
 echo "3. For SSL certificate, run: ./init-letsencrypt.sh"
 echo ""
