@@ -1,10 +1,19 @@
 #!/bin/bash
 
+set -e
+
 domains=(food.careby.app www.food.careby.app)
 rsa_key_size=4096
 data_path="./certbot"
-email="your-email@example.com" # Өөрийн имэйл хаягаа оруулна уу
+email="boldoobuyka25@gmail.com" # Өөрийн имэйл хаягаа оруулна уу
 staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits
+
+# Check if email is set
+if [ -z "$email" ]; then
+  echo "Error: Please set your email address in the script"
+  echo "Edit this file and change: email=\"boldoobuyka25@gmail.com\""
+  exit 1
+fi
 
 if [ -d "$data_path" ]; then
   read -p "Existing data found for $domains. Continue and replace existing certificate? (y/N) " decision
