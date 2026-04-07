@@ -45,6 +45,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+ALLOWED_HOSTS = [
+    "food.careby.app",
+    "www.food.careby.app",
+    "103.50.205.214",
+    "localhost",
+    "127.0.0.1",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://food.careby.app",
+    "https://www.food.careby.app",
+]
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

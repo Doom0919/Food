@@ -78,3 +78,5 @@ class getFoodIngredientsBulk(APIView):
         
         return Response(ingredients_data)
 
+
+
